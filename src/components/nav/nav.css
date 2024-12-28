@@ -34,8 +34,6 @@
   .nav {
     width: 50%;
     background-color: white;
-    position: sticky;
-    bottom: 0%;
 
     .icons:hover {
       font-size: 1.5rem;

@@ -1,6 +1,7 @@
 .screen{
   width: 45%;
-  height: 100vh;
+  min-height: 100vh;  
+  scroll-behavior: smooth ;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -10,17 +11,6 @@
   transform: translateX(-50%);
   scroll-margin-top: 1rem;
   overflow-x: hidden;
-}
-
-
-::-webkit-scrollbar {
-  width: 1px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: white;
 }
 
 
