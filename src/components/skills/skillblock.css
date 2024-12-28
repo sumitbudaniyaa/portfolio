@@ -1,0 +1,15 @@
+.skillblock{
+    height: 1.25rem;
+    background-color: white;
+    border-radius: .4rem;
+    margin-top: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: .8rem;
+    display: inline-block;
+    padding: 0 0.5rem; 
+}

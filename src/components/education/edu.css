@@ -1,0 +1,114 @@
+.edu{
+    margin-top: 3rem;
+
+    h2{
+        font-size: 1.25rem;
+        color: white;
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    .educard{
+        width: 100%;
+        height: 4rem;
+        background-color: rgba(128, 128, 128, 0.074);
+        border-radius: .5rem;
+        margin-top: .5rem;
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        img{
+            width: 2rem;
+            height: 2rem;
+            border-radius: .25rem;
+        }
+
+        .clg-desc{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem;
+
+            p{
+                color: white;
+                font-family: "Poppins", serif;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 1.15rem;
+                margin-left: 0;
+                display: flex;
+                align-items: center;
+                
+                .arrow-icon{
+                    margin-left: 0.05rem;
+                    font-size: 1.5rem;
+                    display: none;
+                    transition: all .20s linear;
+                }
+            }
+
+            span{
+                color: grey;                
+                font-family: "Poppins", serif;
+                font-weight: 400;
+                font-style: normal;
+                font-size: .7rem;
+            }
+        } 
+
+        p{
+            color: grey;
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-style: italic;
+            font-size: .9rem;
+            margin-left: auto;
+        }
+    }
+
+
+    .educard:hover{
+        background-color: rgba(128, 128, 128, 0.219);
+        cursor: pointer;
+        p{
+            .arrow-icon{
+                display: block;
+                color: rgb(255, 255, 255);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+    .edu{
+        margin-top: 2rem;
+    .educard{
+
+        height: 8rem;
+
+        .clg-desc{
+            p{
+                font-size: .9rem;
+            }
+
+
+            span{
+                font-size: .6rem;
+            }
+        }
+
+        p{
+            font-size: .6rem;
+        }
+    }
+}
+}

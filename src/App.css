@@ -1,0 +1,31 @@
+.screen{
+  width: 45%;
+  height: 100vh;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow-y: scroll;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  scroll-margin-top: 1rem;
+  overflow-x: hidden;
+}
+
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+.screen{
+  width: 100%;
+}
+}
