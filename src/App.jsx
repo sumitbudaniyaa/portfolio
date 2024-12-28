@@ -10,14 +10,17 @@ function App() {
 
 
   return (
+    <>
      <div className="screen">
            <About />
            <Exp />
            <Edu />
            <Skills />
            <MyProj />
-          <Nav />
+        
       </div>
+         <Nav />
+         </>
   )
 }
 
