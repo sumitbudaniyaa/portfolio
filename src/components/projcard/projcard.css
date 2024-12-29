@@ -1,0 +1,92 @@
+.projcard{
+    width: 100%;
+    height: 10rem;
+    background-color: rgba(128, 128, 128, 0.074);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+
+ 
+
+
+    img{
+        width: 22%;
+        height: 100%;
+        border-radius: .5rem;
+    }
+
+    .projdesc{
+        width: 78%;
+        height: 90%;
+        padding-left: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        h2{
+            font-size: 1.5rem;
+            font-family: "Poppins", serif;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        p{
+            font-size: 1rem;
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        a{
+            color: grey;
+            align-self: flex-end;
+            margin-top: auto;
+            font-family: "Poppins", serif;
+            font-weight: 200;
+            font-style: normal;
+            display: flex;
+            text-decoration: none;
+            align-items: center;
+            font-size: .9rem;
+            cursor: pointer;
+
+            #right-arrow-icon{
+                font-size: 1rem;
+            }
+        }
+
+        a:hover{
+            color: white;
+        }
+    }
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .projcard{
+        height: 7rem;
+
+        img{
+            width: 20%;
+            height: 80%;
+        }
+
+        .projdesc{
+
+            width: 80%;
+
+            h2{
+                font-size: 1rem;
+            }
+
+            p{
+                font-size: .7rem;
+            }
+
+            a{
+                font-size: .6rem;
+            }
+        }
+    }
+}
