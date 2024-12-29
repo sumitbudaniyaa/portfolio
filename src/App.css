@@ -46,11 +46,3 @@
       transform: translateX(-50%);
     }
     }
-
-    @media only screen and (min-width: 1201px)  {
-      .screen{
-        width: 55%;
-        margin-left: 50%;
-        transform: translateX(-50%);
-      }
-      }
