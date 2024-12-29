@@ -21,3 +21,36 @@
   transform: translateX(0);
 }
 }
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .screen{
+    width: 100%;
+    margin-left: 0;
+    transform: translateX(0);
+  }
+  }
+
+  
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .screen{
+    width: 90%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  }
+
+  @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .screen{
+      width: 70%;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    }
+
+    @media only screen and (min-width: 1201px)  {
+      .screen{
+        width: 55%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+      }
