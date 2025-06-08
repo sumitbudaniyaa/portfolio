@@ -5,7 +5,7 @@ const About = () => {
     <div className="about">
       <div className="name-photo">
         <h1>Hi, I'm Sumit👋</h1>
-        <p>Fullstack Developer</p>
+        <p>Full Stack Developer</p>
         <img src="sumitpix.jpg" alt="" />
       </div>
 
