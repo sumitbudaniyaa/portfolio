@@ -1,8 +1,14 @@
 const projdata = [
     {
+        title: "Geni",
+        desc: "Built a Web App for college and career guidance. ",
+        web: "https://aigeni.vercel.app/",
+        logo: "logo.png"
+    },
+    {
         title: "Suplyr",
         desc: "Built Front End for a B2B shot item supply platorm using React.",
-        web: "https://www.suplyr.vercel.app",
+        web: "https://suplyr.vercel.app/",
         logo: "suplyr-logo-light.png",
        
     },
