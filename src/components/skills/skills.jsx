@@ -3,16 +3,17 @@ import "./skills.css";
 
 const Skills = () => {
   const skills = [
-    "HTML",
-    "CSS",
-    "JAVA SCRIPT",
+    "C++",
+    "PYTHON",
+    "ML",
+    "DATA SCIENCE",
     "REACT.JS",
     "EXPRESS.JS",
-    "MONGO DB",
     "NODE.JS",
-    "C",
-    "JAVA",
-    "BOOTSTRAP",
+    "MONGO DB",
+    "JAVA SCRIPT",
+    "HTML",
+    "CSS",
   ];
 
   return (

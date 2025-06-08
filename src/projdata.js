@@ -19,7 +19,8 @@ const projdata = [
         web: "",
         logo: "AMOL LOGO-01.png",
         
-    }
+    },
+  
 ]
 
 export default projdata;
