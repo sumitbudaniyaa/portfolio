@@ -1,5 +1,12 @@
 const projdata = [
         {
+        title: "MyPass",
+        desc: "Built a Full Stack Event ticket booking portal. Worked on backend and frontend and made it to the point where it could handle 1500-200 bookings per minute.",
+        web: "https://www.mypass.live/",
+        logo: "mypass.jpeg",
+       
+    },
+        {
         title: "Feedo",
         desc: "Built Full Stack QR food ordering app for restaurants.",
         web: "https://consolefeedo.vercel.app/",
