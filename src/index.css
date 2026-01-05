@@ -1,22 +1,28 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "tailwindcss";
 
-body{
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  background-color: rgba(7, 7, 7, 0.978);
-}
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
 
-::-webkit-scrollbar {
-  width: 1px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: white;
+  html {
+    @apply overflow-x-hidden;
+  }
+
+  body {
+    @apply w-screen h-screen overflow-x-hidden;
+    background-color: rgba(7, 7, 7, 0.978);
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white;
+  }
 }
