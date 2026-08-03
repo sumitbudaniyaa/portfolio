@@ -1,7 +1,8 @@
 import { ArrowUpRight, Github, Star } from "lucide-react";
 
 /**
- * One project as a horizontal row: thumbnail tile, copy, corner arrow.
+ * One project as a text row: copy and a corner arrow. No imagery —
+ * this section is deliberately logo-free.
  */
 const ProjCard = ({
   title,
@@ -21,23 +22,17 @@ const ProjCard = ({
 
   return (
     <Tag {...linkProps} className="row group items-start">
-      {/* Typographic monogram tile — no logos in this section by design. */}
-      <div className="relative grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-surface-2 sm:h-32 sm:w-32">
-        <span className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-fg-faint transition-all duration-500 group-hover:scale-105 group-hover:text-flame sm:text-3xl">
-          {title.slice(0, 2)}
-        </span>
-
-        {featured && (
-          <span className="absolute left-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-lime text-bg">
-            <Star size={9} fill="currentColor" />
-          </span>
-        )}
-      </div>
-
-      {/* Copy */}
       <div className="min-w-0 flex-1 py-0.5">
-        <h3 className="font-display text-[1.15rem] font-bold tracking-[-0.02em] text-fg transition-colors duration-300 group-hover:text-flame sm:text-[1.3rem]">
+        <h3 className="flex items-center gap-2 font-display text-[1.15rem] font-bold tracking-[-0.02em] text-fg transition-colors duration-300 group-hover:text-flame sm:text-[1.3rem]">
           {title}
+          {featured && (
+            <Star
+              size={13}
+              aria-label="Featured"
+              className="shrink-0 text-lime"
+              fill="currentColor"
+            />
+          )}
         </h3>
         {kicker && (
           <p className="mt-0.5 text-[0.9rem] text-fg-faint">{kicker}</p>
