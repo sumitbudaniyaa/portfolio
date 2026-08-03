@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="62 148 352 186">
+  <defs>
+    <rect x="153.62214" y="163.05508" width="190.00633" height="44.469567" id="rect16"/>
+    <linearGradient id="linearGradient6">
+      <stop style="stop-color:#ffffff;stop-opacity:1;" offset="0" id="stop6"/>
+      <stop style="stop-color:#f9f9f9;stop-opacity:0;" offset="1" id="stop7"/>
+    </linearGradient>
+    <linearGradient id="linearGradient7" x1="48.136398" y1="88.215502" x2="168.74376" y2="87.711273" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.57588813,0,0,0.56252016,-26.271857,-25.025969)" href="#linearGradient6"/>
+  </defs>
+  <g id="svg1" transform="matrix(5.189988, 0, 0, 5.863583, -2142.63208, -1192.36084)" style="">
+    <g id="layer1" transform="matrix(1, 0, 0, 1, 424.396118, 221.389221)">
+      <g id="g2">
+        <rect style="fill:url(#linearGradient7);stroke:#323230;stroke-width:1.42291;stroke-dasharray:none;stroke-opacity:1" id="rect1" width="68.887756" height="32.491112" x="2.169183" y="8.3514729" rx="16.306015" ry="16.245556"/>
+        <g id="g1">
+          <rect style="fill:#323230;fill-opacity:1;stroke-width:0.13;stroke-dasharray:none" id="rect3" width="58.83617" height="23.573208" x="7.1204658" y="12.807178" rx="11.889488" ry="11.786604"/>
+          <ellipse style="fill:#ff0000;fill-opacity:1;stroke:#fc522c;stroke-width:1.511;stroke-dasharray:none;stroke-opacity:1" id="path5" cx="53.650883" cy="24.429628" rx="12.9465" ry="12.646059"/>
+          <g id="gift-icon" transform="matrix(0.23874523,0,0,0.19721266,46.869926,18.741906)" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke-width:4.52473;stroke-dasharray:none;stroke-dashoffset:0;paint-order:stroke fill markers">
+            <rect x="10.078783" y="22.077839" width="39.842434" height="32.45454" rx="1.9921217" id="rect5" style="stroke-width:4.69692;stroke-dasharray:none;stroke-dashoffset:0;paint-order:stroke fill markers"/>
+            <rect x="6" y="12" width="48" height="10" rx="1" id="rect6" style="stroke-width:4.52473;stroke-dasharray:none;stroke-dashoffset:0;paint-order:stroke fill markers"/>
+            <line x1="26.46067" y1="14.524716" x2="26.46067" y2="53.576866" id="line6" style="stroke-width:4.4708;stroke-dasharray:none;stroke-dashoffset:0;paint-order:stroke fill markers"/>
+            <path d="m 30,12 c 0,0 -15,0 -15,-7 0,-7 13,-3 15,7 z" id="path6" style="stroke-width:4.52473;stroke-dasharray:none;stroke-dashoffset:0;paint-order:stroke fill markers"/>
+            <path d="m 30.665299,11.728813 c 0,0 14.866197,0.600416 14.071345,-6.4946899 C 43.941791,-1.860983 31.511955,1.6730028 30.665299,11.728813 Z" id="path7" style="stroke-width:4.52473;stroke-dasharray:none;stroke-dashoffset:0;paint-order:stroke fill markers"/>
+            <line x1="34.833992" y1="13.101928" x2="34.833992" y2="52.256359" id="line15" style="stroke-width:4.47664;stroke-dasharray:none;stroke-dashoffset:0;paint-order:stroke fill markers"/>
+          </g>
+        </g>
+      </g>
+      <text transform="scale(0.26458333)" id="text16" style="font-size:42.6667px;line-height:2.4;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect16);display:inline;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:6.51969;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"/>
+    </g>
+  </g>
+</svg>

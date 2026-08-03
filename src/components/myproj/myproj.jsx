@@ -1,21 +1,21 @@
-import ProjCard from '../projcard/projcard';
-import projdata from '../../projdata';
+import Section from "../ui/section";
+import ProjCard from "../projcard/projcard";
+import { projects } from "../../data/content";
 
-
-const MyProj = () =>{
-    return(
-        <div className="myproj mt-12 max-[480px]:mt-8">
-            <h2 className="text-xl text-white font-semibold">My Projects</h2>
-            <p className="text-gray-500 font-normal max-[480px]:text-[.9rem]">Some of my projects are listed below</p>
-
-
-            <div className="projbox w-full flex flex-col">
-                {projdata.map((proj)=>(
-                     <ProjCard title = {proj.title} desc={proj.desc} logo={proj.logo} web={proj.web}/>
-                ))}
-            </div>
-        </div>
-    )
-}
+const MyProj = () => {
+  return (
+    <Section
+      id="projects"
+      title={["Recent", "Projects"]}
+      meta="A few things I've designed, built and shipped — from multi-tenant SaaS to computer vision."
+    >
+      <div className="flex flex-col gap-2">
+        {projects.map((proj) => (
+          <ProjCard key={proj.title} {...proj} />
+        ))}
+      </div>
+    </Section>
+  );
+};
 
 export default MyProj;

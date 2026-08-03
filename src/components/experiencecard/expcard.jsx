@@ -1,35 +1,61 @@
-const ExpCard = () => {
+import { ArrowUpRight } from "lucide-react";
+
+/**
+ * One row in the Experience / Education list. Renders as a link when
+ * `href` is provided, otherwise a plain row.
+ */
+const ExpCard = ({ title, subtitle, desc, logo, period, current, href }) => {
+  const Tag = href ? "a" : "div";
+  const linkProps = href
+    ? { href, target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
-    <div className="expcard w-full bg-gradient-to-br from-gray-500/[.074] to-gray-600/[.05] rounded-xl mt-2 flex flex-col p-5 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/20 group">
-      <div className="flex items-center justify-between gap-4">
-        <div className="w-12 h-12 rounded-lg overflow-hidden bg-white/95 flex items-center justify-center flex-shrink-0 border border-gray-300/20 max-[480px]:w-10 max-[480px]:h-10">
-          <img
-            src="paddy.png"
-            alt="Paddy Digital logo"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <div className="flex-grow min-w-0">
-          <p className="text-[1.15rem] text-white font-semibold flex items-center gap-2 group-hover:text-blue-400 transition-colors duration-300 max-[480px]:text-base">
-            Software Engineer - Intern
-          </p>
-          <span className="text-[1rem] text-white/60 group-hover:text-white/75 transition-colors duration-300 max-[480px]:text-[.7rem]">
-            Paddy Digital Pvt. Ltd.
-          </span>
-        </div>
-
-        <div className="flex-shrink-0 flex items-center gap-2">
-          <p className="text-[.75rem] text-white/50 flex items-center gap-1.5 max-[480px]:text-[.65rem] whitespace-nowrap">
-            Nov, 2025 - current
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-          </p>
-        </div>
+    <Tag {...linkProps} className="row group items-start">
+      <div className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-2xl border border-line-soft bg-white p-1.5 sm:h-14 sm:w-14">
+        <img
+          src={logo}
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-contain"
+        />
       </div>
-    </div>
+
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 className="font-display text-[1.1rem] font-bold tracking-[-0.02em] text-fg transition-colors duration-300 group-hover:text-flame sm:text-[1.25rem]">
+            {title}
+          </h3>
+
+          <p className="flex shrink-0 items-center gap-2 font-mono text-[0.66rem] uppercase tracking-[0.12em] text-fg-faint">
+            {period}
+            {current && (
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-flame" />
+              </span>
+            )}
+          </p>
+        </div>
+
+        {subtitle && (
+          <p className="mt-1 text-[0.88rem] text-fg-faint">{subtitle}</p>
+        )}
+        {desc && (
+          <p className="mt-2.5 text-[0.88rem] leading-relaxed text-fg-soft">
+            {desc}
+          </p>
+        )}
+      </div>
+
+      {href && (
+        <ArrowUpRight
+          size={18}
+          aria-hidden="true"
+          className="mt-1 hidden shrink-0 text-flame opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 sm:block"
+        />
+      )}
+    </Tag>
   );
 };
 

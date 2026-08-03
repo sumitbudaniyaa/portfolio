@@ -1,64 +1,88 @@
-import { MdKeyboardArrowRight } from "react-icons/md";
-import {Star} from 'lucide-react';
+import { ArrowUpRight, Github, Star } from "lucide-react";
 
-const ProjCard = ({title, desc, logo, web, star}) => {
+/**
+ * One project as a horizontal row: thumbnail tile, copy, corner arrow.
+ */
+const ProjCard = ({
+  title,
+  kicker,
+  desc,
+  repo,
+  live,
+  liveLabel = "Live site",
+  tags = [],
+  featured,
+}) => {
+  const primary = live || repo;
+  const Tag = primary ? "a" : "div";
+  const linkProps = primary
+    ? { href: primary, target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
-    <div className="projcard relative w-full h-auto bg-gradient-to-br from-gray-500/[.074] to-gray-600/[.05] rounded-2xl p-5 mt-4 flex items-center border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/20 group">
-      {star && (
-        <div className="absolute right-3 top-3 flex items-center gap-1.5 bg-yellow-500/20 backdrop-blur-sm px-2 py-1 rounded-full border border-yellow-500/40 max-[480px]:right-2 max-[480px]:top-2">
-          <Star
-            size={'0.9rem'}
-            fill="currentColor"
-            className="text-yellow-500 drop-shadow-[0_0_6px_rgba(234,179,8,0.6)]"
-          />
-          <span className="text-yellow-500 text-[0.7rem] font-semibold uppercase tracking-wider max-[480px]:text-[0.6rem]">
-            Star
+    <Tag {...linkProps} className="row group items-start">
+      {/* Typographic monogram tile — no logos in this section by design. */}
+      <div className="relative grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-surface-2 sm:h-32 sm:w-32">
+        <span className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-fg-faint transition-all duration-500 group-hover:scale-105 group-hover:text-flame sm:text-3xl">
+          {title.slice(0, 2)}
+        </span>
+
+        {featured && (
+          <span className="absolute left-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-lime text-bg">
+            <Star size={9} fill="currentColor" />
           </span>
-        </div>
-      )}
-
-      {logo ? (
-        <div className="w-[22%] h-full min-h-[100px] rounded-lg overflow-hidden bg-gray-800/50 flex items-center justify-center max-[480px]:w-[20%] max-[480px]:min-h-[80px] border border-gray-700/30 group-hover:border-gray-600/50 transition-all duration-300">
-          <img
-            src={logo}
-            alt={`${title} logo`}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-          />
-        </div>
-      ) : (
-        <div className="w-[22%] h-full min-h-[100px] rounded-lg bg-gradient-to-br from-gray-700/40 to-gray-800/40 flex items-center justify-center max-[480px]:w-[20%] max-[480px]:min-h-[80px] border border-gray-700/50">
-          <span className="text-4xl max-[480px]:text-2xl">📁</span>
-        </div>
-      )}
-
-      <div className="projdesc w-[78%] h-full pl-5 flex flex-col justify-between gap-2 max-[480px]:w-[80%] max-[480px]:pl-3">
-        <div>
-          <h2 className="text-2xl text-white font-semibold mb-2 max-[480px]:text-base group-hover:text-blue-400 transition-colors duration-300">
-            {title}
-          </h2>
-          <p className="text-base font-normal text-white/60 leading-relaxed max-[480px]:text-[.7rem] group-hover:text-white/75 transition-colors duration-300">
-            {desc}
-          </p>
-        </div>
-
-        {web && (
-          <a
-            href={web}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 self-end mt-2 font-light flex no-underline items-center gap-1 text-[.9rem] cursor-pointer hover:text-blue-400 transition-all duration-300 max-[480px]:text-[.6rem] group/link"
-          >
-            <span className="border-b border-transparent group-hover/link:border-blue-400 transition-all duration-300">
-              Visit Website
-            </span>
-            <MdKeyboardArrowRight
-              id="right-arrow-icon"
-              className="text-lg transition-transform duration-300 group-hover/link:translate-x-1"
-            />
-          </a>
         )}
       </div>
-    </div>
+
+      {/* Copy */}
+      <div className="min-w-0 flex-1 py-0.5">
+        <h3 className="font-display text-[1.15rem] font-bold tracking-[-0.02em] text-fg transition-colors duration-300 group-hover:text-flame sm:text-[1.3rem]">
+          {title}
+        </h3>
+        {kicker && (
+          <p className="mt-0.5 text-[0.9rem] text-fg-faint">{kicker}</p>
+        )}
+
+        <p className="mt-2.5 text-[0.88rem] leading-relaxed text-fg-soft">
+          {desc}
+        </p>
+
+        {tags.length > 0 && (
+          <div className="mt-3.5 flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <span key={tag} className="chip">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {(live || repo) && (
+          <div className="mt-3.5 flex flex-wrap items-center gap-4 text-[0.8rem]">
+            {live && (
+              <span className="inline-flex items-center gap-1.5 text-fg">
+                <span className="link-underline">{liveLabel}</span>
+                <ArrowUpRight size={13} />
+              </span>
+            )}
+            {repo && (
+              <span className="inline-flex items-center gap-1.5 text-fg-faint">
+                <Github size={13} />
+                <span className="link-underline">Source</span>
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+
+      {primary && (
+        <ArrowUpRight
+          size={20}
+          aria-hidden="true"
+          className="mt-1 hidden shrink-0 text-flame opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 sm:block"
+        />
+      )}
+    </Tag>
   );
 };
 
