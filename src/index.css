@@ -1,253 +1,387 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  /* Dark canvas */
-  --color-bg: #0c0c0c;
-  --color-surface: #141414;
-  --color-surface-2: #1b1b1b;
-
-  /* Type */
-  --color-fg: #f6f5f4;
-  --color-fg-soft: #9b9b9b;
-  --color-fg-faint: #6b6b6b;
-  /* The second, recessed line of a display heading */
-  --color-ghost: #2c2c2c;
-
-  --color-line: #2a2a2a;
-  --color-line-soft: #1e1e1e;
-
-  /* Accents */
-  --color-flame: #ea5b2b;
-  --color-lime: #c5ff41;
-
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+:root {
+  --surface-bg: #ffffff;
+  --surface-ink: #11110f;
+  --surface-muted: #706c63;
+  --surface-green: #148e4b;
+  --theme-accent: #0284c7;
+  --surface-border: rgba(17, 17, 15, 0.1);
+  --surface-card: #ffffff;
+  --surface-card-subtle: rgba(0, 0, 0, 0.03);
+  --content-width: 728px;
+  --layout-gutter: clamp(20px, 5.5vw, 110px);
+  --page-bg: #ffffff;
+  --fade-to: #ffffff;
+  --sky-opacity: 0.98;
 }
 
-@layer base {
-  * {
-    @apply m-0 p-0 box-border;
-  }
-
-  html {
-    @apply overflow-x-hidden scroll-smooth;
-    scroll-padding-top: 7rem;
-  }
-
-  body {
-    @apply min-h-screen overflow-x-hidden font-sans antialiased;
-    background-color: var(--color-bg);
-    color: var(--color-fg);
-  }
-
-  ::selection {
-    background: var(--color-lime);
-    color: #0c0c0c;
-  }
-
-  ::-webkit-scrollbar {
-    @apply w-1.5;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-line);
-    border-radius: 9999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-fg-faint);
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--color-flame);
-    outline-offset: 3px;
-    border-radius: 8px;
-  }
-
-  img {
-    @apply max-w-full;
-  }
+html.dark,
+[data-theme="dark"] {
+  --surface-bg: #090e1a;
+  --surface-ink: #f7f3ed;
+  --surface-muted: #9ba1b0;
+  --surface-green: #22c55e;
+  --theme-accent: #60a5fa;
+  --surface-border: rgba(255, 255, 255, 0.12);
+  --surface-card: #0d1527;
+  --surface-card-subtle: rgba(255, 255, 255, 0.05);
+  --page-bg: #070b18;
+  --fade-to: #070b18;
+  color-scheme: dark;
 }
 
-@layer components {
-  /* ---- Display type ----
-     Giant uppercase headings. Line one reads bright, the rest recede
-     into the background as near-invisible "ghost" type. */
-  .display {
-    @apply font-display font-bold uppercase leading-[0.98] tracking-[-0.035em];
-    /* Sized so the longest line clears the content column at every
-       breakpoint — the column is ~570px at `lg`, not the full viewport. */
-    font-size: clamp(2.4rem, 7vw, 5.25rem);
-  }
-
-  .display-sm {
-    @apply font-display font-bold uppercase leading-[0.88] tracking-[-0.03em];
-    font-size: clamp(2.1rem, 5.6vw, 4rem);
-  }
-
-  .display-ghost {
-    color: var(--color-ghost);
-  }
-
-  .display-accent {
-    color: var(--color-flame);
-  }
-
-  .eyebrow {
-    @apply font-mono text-[0.66rem] uppercase tracking-[0.22em];
-    color: var(--color-fg-faint);
-  }
-
-  /* ---- Surfaces ---- */
-  .card {
-    @apply relative rounded-3xl border transition-all duration-300;
-    border-color: var(--color-line-soft);
-    background: var(--color-surface);
-  }
-
-  .card:hover {
-    border-color: var(--color-line);
-    background: var(--color-surface-2);
-    transform: translateY(-3px);
-  }
-
-  /* The white profile panel that stays pinned beside the content. */
-  .panel {
-    @apply rounded-[2rem] bg-white text-[#111];
-  }
-
-  .chip {
-    @apply inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[0.66rem] uppercase tracking-[0.06em] transition-colors duration-200;
-    border-color: var(--color-line);
-    color: var(--color-fg-soft);
-    background: var(--color-bg);
-  }
-
-  .chip:hover {
-    border-color: var(--color-flame);
-    color: var(--color-flame);
-  }
-
-  /* ---- Buttons ---- */
-  .btn {
-    @apply inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium no-underline transition-all duration-200;
-  }
-
-  .btn-primary {
-    background: var(--color-flame);
-    color: #fff;
-  }
-  .btn-primary:hover {
-    filter: brightness(1.12);
-  }
-
-  .btn-ghost {
-    @apply border;
-    border-color: var(--color-line);
-    color: var(--color-fg);
-  }
-  .btn-ghost:hover {
-    background: var(--color-fg);
-    color: var(--color-bg);
-    border-color: var(--color-fg);
-  }
-
-  .link-underline {
-    @apply relative;
-  }
-  .link-underline::after {
-    content: "";
-    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 transition-transform duration-300;
-    background: currentColor;
-  }
-  .link-underline:hover::after {
-    @apply origin-left scale-x-100;
-  }
-
-  /* ---- Row list: projects + experience ---- */
-  .row {
-    @apply relative flex items-center gap-5 rounded-3xl border border-transparent px-3 py-4 no-underline transition-all duration-300 sm:gap-7 sm:px-4;
-  }
-
-  .row:hover {
-    border-color: var(--color-line-soft);
-    background: var(--color-surface);
-  }
-
-  /* ---- Marquee ticker ---- */
-  .marquee {
-    @apply relative flex overflow-hidden;
-    mask-image: linear-gradient(
-      90deg,
-      transparent,
-      #000 8%,
-      #000 92%,
-      transparent
-    );
-  }
-
-  .marquee-track {
-    @apply flex shrink-0 items-center gap-10 pr-10;
-    animation: marquee 34s linear infinite;
-  }
-
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
+::selection {
+  background-color: var(--surface-green, #148e4b);
+  color: #ffffff;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+* {
+  box-sizing: border-box;
 }
 
-@layer utilities {
-  /* Scroll without the chrome — used on the two desktop columns so the
-     split layout reads as one seamless surface. */
-  .no-scrollbar {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
-  }
+html {
+  min-height: 100%;
+  background-color: var(--page-bg);
+  color: var(--surface-ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 600ms cubic-bezier(0.4, 0, 0.2, 1), color 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  .reveal {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: var(--surface-ink);
+  background-color: var(--page-bg);
+  transition: background-color 600ms cubic-bezier(0.4, 0, 0.2, 1), color 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Site Layout Grid matching Pranshu Agarwal's site */
+.site-grid {
+  display: grid;
+  grid-template-columns: minmax(var(--layout-gutter), 1fr) minmax(0, var(--content-width)) minmax(var(--layout-gutter), 1fr);
+  width: 100%;
+}
+
+.site-grid > * {
+  grid-column: 2;
+}
+
+/* Sky Atmosphere system */
+.site-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: clamp(560px, 68svh, 840px);
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--sky-opacity);
+  mask-image: linear-gradient(180deg, #000 0%, #000 48%, rgba(0, 0, 0, 0.9) 68%, rgba(0, 0, 0, 0.4) 86%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 48%, rgba(0, 0, 0, 0.9) 68%, rgba(0, 0, 0, 0.4) 86%, rgba(0, 0, 0, 0) 100%);
+}
+
+.site-sky__wash {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(44% 34% at 52% 18%, var(--focal-a, rgba(255, 255, 255, 0.6)) 0%, var(--focal-b, transparent) 70%),
+    radial-gradient(82% 48% at 50% 2%, var(--wash-a, rgba(34, 157, 255, 0.72)) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(96% 58% at 50% 18%, var(--wash-b, rgba(114, 202, 255, 0.56)) 0%, rgba(255, 255, 255, 0) 76%),
+    linear-gradient(180deg, var(--wash-a, #24a1ff) 0%, var(--wash-b, #80d5ff) 28%, var(--wash-c, #daf3ff) 56%, var(--wash-d, #ffffff) 82%, var(--fade-to, #ffffff) 100%);
+  transition: filter 600ms ease;
+}
+
+.site-sky__wash::after {
+  position: absolute;
+  inset: -1px 0 -80px;
+  content: "";
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0 38%, color-mix(in srgb, var(--fade-to, #ffffff) 18%, transparent) 55%, color-mix(in srgb, var(--fade-to, #ffffff) 64%, transparent) 78%, var(--fade-to, #ffffff) 100%);
+  pointer-events: none;
+}
+
+/* Weather & Time Floating Control Trigger */
+.sky-meta-control {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 45;
+}
+
+.sky-meta-trigger {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0.5px solid var(--surface-border);
+  border-radius: 12px;
+  background: var(--surface-card);
+  color: var(--surface-ink);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: transform 200ms ease, opacity 200ms ease, background-color 300ms ease, color 300ms ease;
+}
+
+.sky-meta-trigger:hover {
+  transform: scale(1.08);
+}
+
+.sky-meta-trigger.is-open {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.7);
+}
+
+.sky-meta-pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-ink);
+}
+
+.sky-meta-pulse::after {
+  position: absolute;
+  inset: -6px;
+  border: 1.5px solid var(--surface-ink);
+  border-radius: inherit;
+  content: "";
+  opacity: 0.45;
+  animation: sky-pulse 2s ease-out infinite;
+}
+
+@keyframes sky-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+  80%,
+  100% {
     opacity: 0;
-    transform: translateY(18px);
-    transition:
-      opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(1.4);
   }
+}
 
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
+/* Sky Meta Sheet Backdrop & Modal */
+.sky-meta-backdrop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 44;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.2);
+  transform-origin: right bottom;
+  transition: opacity 220ms ease, transform 380ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.sky-meta-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.sky-meta-sheet {
+  display: grid;
+  gap: 14px;
+  width: min(320px, calc(100vw - 32px));
+  padding: 20px;
+  border: 0.5px solid var(--surface-border);
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--surface-card) 88%, transparent);
+  color: var(--surface-ink);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+}
+
+.sky-location-trigger {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--surface-ink);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sky-icon-button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--surface-ink);
+  opacity: 0.75;
+  cursor: pointer;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.sky-icon-button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Semi-circular Time Dial */
+.sky-time-dial {
+  position: relative;
+  width: 240px;
+  height: 135px;
+  margin: 0 auto;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.sky-time-dial__handle {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--surface-border);
+  border-radius: 50%;
+  background: var(--surface-card);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: background-color 300ms ease;
+}
+
+.sky-time-dial__period {
+  position: absolute;
+  font-size: 9px;
+  font-weight: 700;
+  color: #706c63;
+  pointer-events: none;
+}
+
+.sky-time-dial__period--midnight {
+  bottom: 2px;
+  left: 6px;
+}
+.sky-time-dial__period--morning {
+  top: 36%;
+  left: 18%;
+}
+.sky-time-dial__period--noon {
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sky-time-dial__period--evening {
+  top: 36%;
+  right: 18%;
+}
+.sky-time-dial__period--end {
+  bottom: 2px;
+  right: 6px;
+}
+
+/* Animated Logo Blob */
+.hero-logo {
+  display: block;
+  width: 38px;
+  height: 38px;
+  color: var(--surface-ink);
+}
+
+.hero-logo__blob {
+  fill: currentColor;
+  transform-origin: center;
+}
+
+.hero-logo__blob--left {
+  animation: hero-blob-left 4s ease-in-out infinite;
+}
+
+.hero-logo__blob--right {
+  animation: hero-blob-right 4s ease-in-out 0.15s infinite;
+}
+
+@keyframes hero-blob-left {
+  0%,
+  100% {
+    transform: translate(0) scale(1);
   }
+  25% {
+    transform: translate(-0.5px, 1.2px) scale(0.9, 1.1);
+  }
+  75% {
+    transform: translate(0.5px, -0.4px) scale(1.08, 0.94);
+  }
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-    .marquee-track {
-      animation: none;
-    }
-    .card:hover,
-    .row:hover {
-      transform: none;
-    }
-    html {
-      scroll-behavior: auto;
-    }
+@keyframes hero-blob-right {
+  0%,
+  100% {
+    transform: translate(0) scale(1);
+  }
+  25% {
+    transform: translate(0.5px, -1.2px) scale(0.92, 1.1);
+  }
+  75% {
+    transform: translate(-0.4px, 0.4px) scale(1.08, 0.92);
+  }
+}
+
+
+/* Signature Animation */
+.signature-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: signature-draw 2.4s ease forwards 0.4s;
+}
+
+@keyframes signature-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Hide scrollbars cleanly */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+}
+
+/* Clearwater Interactive Water Footer */
+.clearwater-footer canvas {
+  image-rendering: auto;
+}
+
+.clearwater-boat-badge {
+  animation: boat-bob 3.6s ease-in-out infinite;
+}
+
+@keyframes boat-bob {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1.2deg);
   }
 }
